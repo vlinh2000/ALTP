@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Ai la trieu phu</title>
+	<meta charset="utf-8">
+	<style>
+		.hide{
+			display: none;
+		}
+
+	    #wrapper{
+			border: 1px solid black;
+			width: 600px;
+			height: 400px;
+			margin: 100px auto;
+			position: relative;
+	    }
+	    #btn{
+	    	padding: 20px 20px;
+	    	display: block;
+	    	margin: 250px auto;
+	    }
+	    #btn1{
+	    	padding: 20px 20px;
+	    	display: none;
+	    	position: absolute;
+	    	top: 45%;
+	    	left: 10%;
+	    	border-radius: 20px;
+	    	background-color: #FF4500;
+	    	color: white;
+	    	cursor: pointer;
+	    }
+	    #questionScreen{
+	    }
+	    #question{
+          width: 90%;
+          margin: 100px auto;
+          text-align: center;
+          background-color:rgba(1, 47, 126, 0.91);
+          padding: 6px 0px; 
+          color: #FFF;
+          border-radius: 20px;
+	    }
+	    #answer{
+	    	cursor: pointer;
+	    }
+	    #answer1,#answer2,#answer3,#answer4{
+	    	display: inline-block;
+	    }
+	    #ans,#ans1,#ans2,#ans3,#ans4{
+	    	border: 1px solid blue;
+	        width: 80%;
+	        margin: 0 auto;
+	        padding: 6px 0px;
+	        background-color: rgba(1, 47, 126, 0.91);
+	    	color: white;
+	    	border-radius: 20px;
+	    	margin-top: 5px;
+	    }
+	  
+        #board{
+        	top: 10px;
+        	left: 15px;
+        	position: absolute;
+
+        }
+        #ready{
+        	display: inline-block;
+        }
+        #scored{
+        	display: inline-block;
+        }
+        #cash{
+
+        }
+        #ansBefore{
+        	margin: 0 5px;
+        	display: inline-block;
+        }
+        #title{
+        	width: 100%;
+        	height:40%;
+        	margin: 10px auto; 
+        }
+        #wait{
+        	margin-top: 23%;
+        	margin-left: 40%;
+        }
+        #bg1{
+        	background-image: url('./img/intro.PNG');
+        	background-repeat: no-repeat;
+        	display: inline-block;
+             height: 400px;
+             background-size: contain;
+              background-position: right;
+        	
+        }
+        #bg{
+        	background-image: url('./img/bg.PNG');     
+        	background-repeat: no-repeat;  
+        	display: inline-block;
+        	background-size: contain;
+        	      background-position: right;
+
+        }
+        .loader {
+			  border: 16px solid #f3f3f3;
+			  border-radius: 50%;
+			  border-top: 16px solid blue;
+			  width: 120px;
+			  height: 120px;
+			  -webkit-animation: spin 2s linear infinite; /* Safari */
+			  animation: spin 2s linear infinite;
+			}
+
+			/* Safari */
+			@-webkit-keyframes spin {
+			  0% { -webkit-transform: rotate(0deg); }
+			  100% { -webkit-transform: rotate(360deg); }
+			}
+
+			@keyframes spin {
+			  0% { transform: rotate(0deg); }
+			  100% { transform: rotate(360deg); }
+			}
+    </style>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+
+</head>
+
+<body>
+<div id="wrapper">
+	<div  id="welcome" class="hide">
+		<button id="btn">START</button>
+	</div>
+	<div  id="ready" class="hide">
+		<div class="container">
+			<div class="row">
+				<div class="col-6 w-100 " id="bg">
+					<button id="btn1">SẴN SÀNG !</button>
+				</div>		
+		    	<div class="col-6 w-100 " id="bg1"></div>
+		    	
+	        </div>
+		</div>
+	</div>
+		
+	<div  id="wait" class="hide loader"></div>
+	<div id="questionScreen" class="hide">
+		<div id="board">
+			<div id="cash">
+				<i class="zmdi zmdi-money text-warning"></i>
+				<div id="scored" class="text-warning">abc</div>
+			</div>
+			<div id="indexQuestion">a</div>
+			<div id="timeBoard">
+				<i class="zmdi zmdi-timer mr-1"></i>
+				<span id="time"></span>
+			</div>
+		</div>
+		<div id='question'>Cau hoi</div>
+		<div id="answer">
+			<div class="container-fluid">
+				<div class="row">
+				  <div class="col-6">
+				  	<div id="ans1">
+				  		<div id="ansBefore" class="text-warning">A: </div>
+				  		<div id='answer1'>cau hoi 1 </div>
+				  	</div>
+				  	
+				    <div id="ans3">
+				  		<div id="ansBefore"  class="text-warning">C: </div>
+				  		<div id='answer3'>cau hoi 3 </div>
+				  	</div>
+				  </div>
+				  <div class="col-6">
+				  	<div id="ans2">
+				  		<div id="ansBefore"  class="text-warning">B: </div>
+				  		<div id='answer2'>cau hoi 2 </div>
+				  	</div>
+				    <div id="ans4">
+				  		<div id="ansBefore"  class="text-warning">D: </div>
+				  		<div id='answer4'>cau hoi 4</div>
+				  	</div>
+				  </div>
+				
+			    </div>
+			</div>
+			
+		</div>
+		
+	</div>
+	<div id="lose" class="hide"> 
+		<div id="title">DEFEAT </div>
+		<div id="cash">âa</div>
+		<button id='btn2'>Chơi lại !</button>
+	</div>
+
+</div>	
+
+</body>
+<script type="text/javascript" src="count.js"></script>
+<script type="text/javascript" src="ui.js"></script>
+<script type="text/javascript" src="sound.js"></script>
+<script type="text/javascript" src="script.js"></script>
+
+
+</html>
