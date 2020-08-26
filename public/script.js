@@ -92,16 +92,19 @@ class altp{
   this.check=setTimeout(()=>{
     this.bgSound.stop();
      this.end();},20000);
-    this.bgSound.start();});
-   this.ui.showQuestion(questions[this.currentQuestion],this.score[this.currentQuestion],this.currentQuestion);
-   this.ui.onClickAnswer((answer)=>{
+    this.bgSound.start();
+
+    this.ui.onClickAnswer((answer)=>{
     this.clock.end();
     clearTimeout(this.check);
-   	this.currentAnswer=answer;
-   	this.ui.chanceColor(this.currentAnswer,"#FF9900");
+    this.currentAnswer=answer;
+    this.ui.chanceColor(this.currentAnswer,"#FF9900");
     this.bgSound.stop();  
     this.finalSound.start(()=>{this.checkAnswer();});
  });
+  });
+   this.ui.showQuestion(questions[this.currentQuestion],this.score[this.currentQuestion],this.currentQuestion);
+   
 
 }
  
