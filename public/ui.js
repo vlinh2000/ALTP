@@ -33,6 +33,13 @@ class ui{
     document.getElementById("ans4").addEventListener('click',()=> callback(3));
    }
 
+   oneClick(){
+    document.getElementById("ans1").removeEventListener('click');
+    document.getElementById("ans2").removeEventListener('click');
+    document.getElementById("ans3").removeEventListener('click');
+    document.getElementById("ans4").removeEventListener('click');
+   }
+
    chanceColor(indexAnswer,color){
    	let answer = 'ans'+(indexAnswer+1);
      document.getElementById(answer).style.backgroundColor=color;

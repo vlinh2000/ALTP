@@ -93,8 +93,10 @@ class altp{
     this.bgSound.stop();
      this.end();},20000);
     this.bgSound.start();
-
-    this.ui.onClickAnswer((answer)=>{
+  });
+   this.ui.showQuestion(questions[this.currentQuestion],this.score[this.currentQuestion],this.currentQuestion);
+   this.ui.onClickAnswer((answer)=>{
+    this.arrSound[this.currentQuestion].stop();
     this.clock.end();
     clearTimeout(this.check);
     this.currentAnswer=answer;
@@ -102,9 +104,6 @@ class altp{
     this.bgSound.stop();  
     this.finalSound.start(()=>{this.checkAnswer();});
  });
-  });
-   this.ui.showQuestion(questions[this.currentQuestion],this.score[this.currentQuestion],this.currentQuestion);
-   
 
 }
  
