@@ -75,6 +75,7 @@ class altp{
   	this.arrSound[i] = new sound(questions[i].sound);
   }
   this.introSound = new sound('gioithieu.mp3');
+  this.isUse50=false;
  }
  
   intro(){
@@ -102,7 +103,8 @@ class altp{
     this.currentAnswer=answer;
     this.ui.chanceColor(this.currentAnswer,"#FF9900");
     this.bgSound.stop();  
-    this.finalSound.start(()=>{this.checkAnswer();});
+    this.finalSound.start(()=>{
+      this.checkAnswer();});
  });
 
 }

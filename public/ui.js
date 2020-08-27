@@ -34,10 +34,10 @@ class ui{
    }
 
    oneClick(){
-    document.getElementById("ans1").removeEventListener('click');
-    document.getElementById("ans2").removeEventListener('click');
-    document.getElementById("ans3").removeEventListener('click');
-    document.getElementById("ans4").removeEventListener('click');
+    document.getElementById("ans1").removeEventListener('click',()=> callback(0));
+    document.getElementById("ans2").removeEventListener('click',()=> callback(1));
+    document.getElementById("ans3").removeEventListener('click',()=> callback(2));
+    document.getElementById("ans4").removeEventListener('click',()=> callback(3));
    }
 
    chanceColor(indexAnswer,color){
@@ -60,6 +60,10 @@ class ui{
    }
     stopClock(){
 
+    }
+
+    fearture50(){
+      document.getElementById("fearture50").style.display='block';
     }
 
 
