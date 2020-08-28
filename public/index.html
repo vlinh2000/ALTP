@@ -108,7 +108,7 @@
 			top: 10px;
 			left: 15px;
 			position: absolute;
-			width: 70%;
+			width: 80%;
 
 		}
 
@@ -152,7 +152,36 @@
 			position: absolute;
 			top: 87%;
 		}
+        #feature50{
+          width: 50px;
+          height: 30px;
+          background-image: url("https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/50-50_lifeline.webp/150px-50-50_lifeline.webp.png");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: contain;
+          border-radius: 50%;
+          position: absolute;
+          right: 0;
 
+
+        }
+
+        #notFeature50{
+         width: 50px;
+          height: 30px;
+          border-radius: 50%;
+          background-image: url("https://vignette.wikia.nocookie.net/ai-la-trieu-phu/images/9/91/5050used.png/revision/latest/top-crop/width/300/height/300?cb=20200514061024&path-prefix=vi");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;   
+          position: absolute;
+          right: 0;
+        }
+        #help{
+         right: 0;
+         position: relative;
+         width: 110%;
+        }
 	   footer img{
 		   width: 25%;
 	   }
@@ -201,17 +230,24 @@
 
 			<div id="wait" class="hide loader"></div>
 			<div id="questionScreen" class="hide">
-				<div id="board">
-			
-						<div id="cash">
-						<i class="zmdi zmdi-money text-warning"></i>
-						<div id="scored" class="text-warning">abc</div>
+				<div id="board" class="d-flex">
+			             <div class="flex-grow-1">
+			             	<div id="cash">
+						   		<i class="zmdi zmdi-money text-warning"></i>
+						   		<div id="scored" class="text-warning">abc</div>
+					       </div>
+					       <div id="indexQuestion" class="text-primary font-weight-bold">a</div>
+					       <div id="timeBoard">
+						   		<i class="zmdi zmdi-timer mr-1 text-success"></i>
+						   		<span id="time" class="text-danger"></span>
+					       </div>
+			             </div>
+						 
+					     <div id="help">
+					     	<button id="feature50"></button>
+					        <button id="notFeature50" class="hide"></button>
 					     </div>
-					     <div id="indexQuestion" class="text-primary font-weight-bold">a</div>
-					     <div id="timeBoard">
-						   <i class="zmdi zmdi-timer mr-1 text-success"></i>
-						   <span id="time" class="text-danger"></span>
-					     </div>
+					     
 
 				</div>
 				<div id='question'>Cau hoi</div>

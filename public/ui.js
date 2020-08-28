@@ -14,7 +14,7 @@ class ui{
   	var startBtn=document.getElementById(id);
   	startBtn.addEventListener('click',callback);
   }
- 
+
    showQuestion(question,scored,index){
    	document.getElementById("scored").innerHTML =scored;
    	document.getElementById("indexQuestion").innerHTML ='Câu hỏi: '+(index+1);
@@ -62,9 +62,13 @@ class ui{
 
     }
 
-    fearture50(){
-      document.getElementById("fearture50").style.display='block';
+    feature50(ans,ans1){
+     document.getElementById(ans).innerHTML="";
+      document.getElementById(ans1).innerHTML="";
     }
-
-
+   
+    isUsed50(){
+      document.getElementById("feature50").style.display="none";
+      document.getElementById("notFeature50").style.display="block";
+    }
 }

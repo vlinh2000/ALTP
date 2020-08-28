@@ -59,7 +59,7 @@ class altp{
   this.check;
   this.ui.showScreen("welcome");
   this.ui.onStartBtnClick(()=>{this.ui.showScreen("ready"); this.intro();},"btn");
-  this.currentQuestion = 0;
+ this.currentQuestion = 0;
   this.time=null;
   this.currentAnswer = null;
   this.score =["0","200","400","600","1.000","2.000","3.000","6.000","10.000","14.000","22.000","30.000","40.000","60.000","85.000","150.000"];
@@ -76,6 +76,7 @@ class altp{
   }
   this.introSound = new sound('gioithieu.mp3');
   this.isUse50=false;
+  this.sound5050 =new sound('5050.mp3');
  }
  
   intro(){
@@ -96,6 +97,17 @@ class altp{
     this.bgSound.start();
   });
    this.ui.showQuestion(questions[this.currentQuestion],this.score[this.currentQuestion],this.currentQuestion);
+   
+   /*use feature 50:50*/
+   if(this.isUse50===false){
+      this.ui.onStartBtnClick(()=>{
+        this.arrSound[this.currentQuestion].stop();
+        this.use50();
+      },"feature50");
+   }
+   
+
+ /*click answer*/
    this.ui.onClickAnswer((answer)=>{
     this.arrSound[this.currentQuestion].stop();
     this.clock.end();
@@ -106,7 +118,7 @@ class altp{
     this.finalSound.start(()=>{
       this.checkAnswer();});
  });
-
+    
 }
  
  checkAnswer(){
@@ -136,7 +148,9 @@ class altp{
   reset(){
   	this.currentQuestion=0;
   	this.currentAnswer=null;
+    this.isUse50=false;
   	this.ui.reset();
+
   }
  
  end(){
@@ -150,8 +164,38 @@ class altp{
     this.ui.showScreen("wait");
     this.startSound.start(()=>{this.start();})},"btn2");
  }
+   
 
+   random(){
+    let done = false;
+    let num;
+    let num1;
+    let correct =questions[this.currentQuestion].correct;
+    let arr=[0,1,2,3];
+    let newArr=arr.filter((x)=>x!==correct);   // return arr has not correct
+    while(done===false){
+     num = Math.floor(Math.random()*3);
+     num1 = Math.floor(Math.random()*3);
+      if(num!==num1) done=true;
+    } 
+    
+    let value = [newArr[num],newArr[num1]];
+    let result = value.map((x)=>'answer'+(x+1));
+    return result;
+   }
 
+    use50(){
+     this.isUse50=true;
+     this.bgSound.stop();
+     this.clock.end();
+     clearTimeout(this.check);
+      let ans=this.random();
+     this.sound5050.start(()=>{
+      this.bgSound.start();
+     this.ui.feature50(ans[0],ans[1]);
+       });
+     this.ui.isUsed50();
+   }
 }
 
 var game = new altp();
