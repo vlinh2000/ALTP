@@ -77,6 +77,7 @@ class altp{
   this.introSound = new sound('gioithieu.mp3');
   this.isUse50=false;
   this.sound5050 =new sound('5050.mp3');
+  this.endSound = new sound('closing.ogg');
  }
  
   intro(){
@@ -88,7 +89,13 @@ class altp{
   }
 
  start(){
-   this.ui.showScreen("questionScreen");
+    
+    if(this.currentQuestion===questions.length){
+      this.ui.showScreen("endScreen");
+      this.endSound.start();
+
+    }else{
+      this.ui.showScreen("questionScreen");
    this.arrSound[this.currentQuestion].start(()=>{
     this.clock.start();
   this.check=setTimeout(()=>{
@@ -118,6 +125,8 @@ class altp{
     this.finalSound.start(()=>{
       this.checkAnswer();});
  });
+    }
+   
     
 }
  
